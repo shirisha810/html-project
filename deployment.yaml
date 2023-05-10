@@ -1,0 +1,23 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: httpd-deployment
+    labels:
+      app: httpd2
+spec:
+ replicas: 1
+ selector:
+     matchLabels:
+      app: httpd2
+ template:
+     metadata:
+        labels:
+            app: httpd2
+     spec:
+       containers:
+         - name: httpd2
+           image: 758671678745.dkr.ecr.ap-south-1.amazonaws.com/html-project
+           imagePullPolicy: "Always"
+           ports:
+           - containerPort: 80
